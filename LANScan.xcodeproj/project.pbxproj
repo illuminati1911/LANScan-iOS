@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		32350FC21E36936200AEB1C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FC11E36936200AEB1C1 /* AppDelegate.swift */; };
-		32350FC41E36936200AEB1C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FC31E36936200AEB1C1 /* ViewController.swift */; };
 		32350FC91E36936200AEB1C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32350FC81E36936200AEB1C1 /* Assets.xcassets */; };
 		32350FCC1E36936200AEB1C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */; };
 		32350FD71E36936200AEB1C1 /* LANScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FD61E36936200AEB1C1 /* LANScanTests.swift */; };
+		32350FE31E3694A200AEB1C1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE11E3694A200AEB1C1 /* MainViewController.swift */; };
+		32350FE41E3694A200AEB1C1 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE21E3694A200AEB1C1 /* ScanViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,13 +28,14 @@
 /* Begin PBXFileReference section */
 		32350FBE1E36936200AEB1C1 /* LANScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LANScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32350FC11E36936200AEB1C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		32350FC31E36936200AEB1C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32350FC81E36936200AEB1C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32350FCB1E36936200AEB1C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32350FCD1E36936200AEB1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32350FD21E36936200AEB1C1 /* LANScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LANScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32350FD61E36936200AEB1C1 /* LANScanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LANScanTests.swift; sourceTree = "<group>"; };
 		32350FD81E36936200AEB1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32350FE11E3694A200AEB1C1 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		32350FE21E3694A200AEB1C1 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				32350FC11E36936200AEB1C1 /* AppDelegate.swift */,
-				32350FC31E36936200AEB1C1 /* ViewController.swift */,
+				32350FE11E3694A200AEB1C1 /* MainViewController.swift */,
+				32350FE21E3694A200AEB1C1 /* ScanViewController.swift */,
 				32350FC81E36936200AEB1C1 /* Assets.xcassets */,
 				32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */,
 				32350FCD1E36936200AEB1C1 /* Info.plist */,
@@ -197,8 +200,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32350FC41E36936200AEB1C1 /* ViewController.swift in Sources */,
+				32350FE31E3694A200AEB1C1 /* MainViewController.swift in Sources */,
 				32350FC21E36936200AEB1C1 /* AppDelegate.swift in Sources */,
+				32350FE41E3694A200AEB1C1 /* ScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
