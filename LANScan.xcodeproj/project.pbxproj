@@ -23,6 +23,8 @@
 		324F2BBB1E36983800CAC273 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BB81E36983800CAC273 /* Constants.swift */; };
 		324F2BBC1E36983800CAC273 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BB91E36983800CAC273 /* Extensions.swift */; };
 		324F2BBD1E36983800CAC273 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BBA1E36983800CAC273 /* Utils.swift */; };
+		324F2BC31E36987200CAC273 /* PingWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BC01E36987200CAC273 /* PingWrapper.swift */; };
+		324F2BC41E36987200CAC273 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BC21E36987200CAC273 /* SimplePing.m */; };
 		4A66C75BEB4D80E648E604FB /* Pods_LANScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C144A5528EDCB8CF69FE560 /* Pods_LANScan.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,10 @@
 		324F2BB81E36983800CAC273 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		324F2BB91E36983800CAC273 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		324F2BBA1E36983800CAC273 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		324F2BBF1E36987100CAC273 /* LANScan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LANScan-Bridging-Header.h"; sourceTree = "<group>"; };
+		324F2BC01E36987200CAC273 /* PingWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingWrapper.swift; sourceTree = "<group>"; };
+		324F2BC11E36987200CAC273 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		324F2BC21E36987200CAC273 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		4CEBB13C923ECADA6ED046B2 /* Pods-LANScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScan/Pods-LANScan.release.xcconfig"; sourceTree = "<group>"; };
 		8E5DF4CDEFB2558015119594 /* Pods_LANScanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LANScanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC25BB06EF4212C450470FD /* Pods-LANScanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScanTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScanTests/Pods-LANScanTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 				32350FC81E36936200AEB1C1 /* Assets.xcassets */,
 				32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */,
 				32350FCD1E36936200AEB1C1 /* Info.plist */,
+				324F2BC51E36988300CAC273 /* ICMP */,
 				324F2BBE1E36984400CAC273 /* Utils */,
 				324F2BB71E3697C800CAC273 /* Models */,
 				324F2BB41E3697B200CAC273 /* Images */,
@@ -178,11 +185,22 @@
 		324F2BBE1E36984400CAC273 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				324F2BBF1E36987100CAC273 /* LANScan-Bridging-Header.h */,
 				324F2BB81E36983800CAC273 /* Constants.swift */,
 				324F2BB91E36983800CAC273 /* Extensions.swift */,
 				324F2BBA1E36983800CAC273 /* Utils.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		324F2BC51E36988300CAC273 /* ICMP */ = {
+			isa = PBXGroup;
+			children = (
+				324F2BC01E36987200CAC273 /* PingWrapper.swift */,
+				324F2BC11E36987200CAC273 /* SimplePing.h */,
+				324F2BC21E36987200CAC273 /* SimplePing.m */,
+			);
+			name = ICMP;
 			sourceTree = "<group>";
 		};
 		599A0495CB96567E18751F46 /* Pods */ = {
@@ -262,6 +280,7 @@
 					32350FBD1E36936200AEB1C1 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = Y7K9K4R5AQ;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					32350FD11E36936200AEB1C1 = {
@@ -413,10 +432,12 @@
 				32350FE31E3694A200AEB1C1 /* MainViewController.swift in Sources */,
 				324F2BBC1E36983800CAC273 /* Extensions.swift in Sources */,
 				32350FE91E3694DD00AEB1C1 /* TopView.swift in Sources */,
+				324F2BC41E36987200CAC273 /* SimplePing.m in Sources */,
 				324F2BB61E3697C500CAC273 /* Host.swift in Sources */,
 				32350FE81E3694DD00AEB1C1 /* ScanView.swift in Sources */,
 				324F2BBD1E36983800CAC273 /* Utils.swift in Sources */,
 				32350FC21E36936200AEB1C1 /* AppDelegate.swift in Sources */,
+				324F2BC31E36987200CAC273 /* PingWrapper.swift in Sources */,
 				32350FE41E3694A200AEB1C1 /* ScanViewController.swift in Sources */,
 				32350FEA1E3694DD00AEB1C1 /* HostCell.swift in Sources */,
 				324F2BBB1E36983800CAC273 /* Constants.swift in Sources */,
@@ -551,11 +572,14 @@
 			baseConfigurationReference = E521D472E10FF26B68C0495A /* Pods-LANScan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Y7K9K4R5AQ;
 				INFOPLIST_FILE = LANScan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ville.LANScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LANScan/LANScan-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -565,11 +589,13 @@
 			baseConfigurationReference = 4CEBB13C923ECADA6ED046B2 /* Pods-LANScan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Y7K9K4R5AQ;
 				INFOPLIST_FILE = LANScan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ville.LANScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LANScan/LANScan-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
