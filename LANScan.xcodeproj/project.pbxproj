@@ -28,6 +28,7 @@
 		324F2BCA1E3698B000CAC273 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BC71E3698B000CAC273 /* Reachability.m */; };
 		324F2BCB1E3698B000CAC273 /* WiFiCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BC81E3698B000CAC273 /* WiFiCheck.swift */; };
 		324F2BCC1E3698B000CAC273 /* IPAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BC91E3698B000CAC273 /* IPAddress.swift */; };
+		324F2BD41E3698F100CAC273 /* MacFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BD31E3698F100CAC273 /* MacFinder.m */; };
 		4A66C75BEB4D80E648E604FB /* Pods_LANScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C144A5528EDCB8CF69FE560 /* Pods_LANScan.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,12 @@
 		324F2BC71E3698B000CAC273 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		324F2BC81E3698B000CAC273 /* WiFiCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiCheck.swift; sourceTree = "<group>"; };
 		324F2BC91E3698B000CAC273 /* IPAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddress.swift; sourceTree = "<group>"; };
+		324F2BCE1E3698F100CAC273 /* if_arp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_arp.h; sourceTree = "<group>"; };
+		324F2BCF1E3698F100CAC273 /* if_ether.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_ether.h; sourceTree = "<group>"; };
+		324F2BD01E3698F100CAC273 /* if_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_types.h; sourceTree = "<group>"; };
+		324F2BD11E3698F100CAC273 /* route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
+		324F2BD21E3698F100CAC273 /* MacFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacFinder.h; sourceTree = "<group>"; };
+		324F2BD31E3698F100CAC273 /* MacFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MacFinder.m; sourceTree = "<group>"; };
 		4CEBB13C923ECADA6ED046B2 /* Pods-LANScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScan/Pods-LANScan.release.xcconfig"; sourceTree = "<group>"; };
 		8E5DF4CDEFB2558015119594 /* Pods_LANScanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LANScanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC25BB06EF4212C450470FD /* Pods-LANScanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScanTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScanTests/Pods-LANScanTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +132,7 @@
 				32350FC81E36936200AEB1C1 /* Assets.xcassets */,
 				32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */,
 				32350FCD1E36936200AEB1C1 /* Info.plist */,
+				324F2BD51E3698F600CAC273 /* MacFinder */,
 				324F2BCD1E3698B700CAC273 /* Reachability */,
 				324F2BC51E36988300CAC273 /* ICMP */,
 				324F2BBE1E36984400CAC273 /* Utils */,
@@ -220,6 +228,19 @@
 				324F2BC91E3698B000CAC273 /* IPAddress.swift */,
 			);
 			name = Reachability;
+			sourceTree = "<group>";
+		};
+		324F2BD51E3698F600CAC273 /* MacFinder */ = {
+			isa = PBXGroup;
+			children = (
+				324F2BCE1E3698F100CAC273 /* if_arp.h */,
+				324F2BCF1E3698F100CAC273 /* if_ether.h */,
+				324F2BD01E3698F100CAC273 /* if_types.h */,
+				324F2BD11E3698F100CAC273 /* route.h */,
+				324F2BD21E3698F100CAC273 /* MacFinder.h */,
+				324F2BD31E3698F100CAC273 /* MacFinder.m */,
+			);
+			name = MacFinder;
 			sourceTree = "<group>";
 		};
 		599A0495CB96567E18751F46 /* Pods */ = {
@@ -463,6 +484,7 @@
 				324F2BCB1E3698B000CAC273 /* WiFiCheck.swift in Sources */,
 				32350FEA1E3694DD00AEB1C1 /* HostCell.swift in Sources */,
 				324F2BBB1E36983800CAC273 /* Constants.swift in Sources */,
+				324F2BD41E3698F100CAC273 /* MacFinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
