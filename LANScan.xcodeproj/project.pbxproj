@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		129CDFFF43C0A916BF010F46 /* Pods_LANScanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5DF4CDEFB2558015119594 /* Pods_LANScanTests.framework */; };
 		32350FC21E36936200AEB1C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FC11E36936200AEB1C1 /* AppDelegate.swift */; };
 		32350FC91E36936200AEB1C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32350FC81E36936200AEB1C1 /* Assets.xcassets */; };
 		32350FCC1E36936200AEB1C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */; };
@@ -16,6 +17,7 @@
 		32350FE81E3694DD00AEB1C1 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE51E3694DD00AEB1C1 /* ScanView.swift */; };
 		32350FE91E3694DD00AEB1C1 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE61E3694DD00AEB1C1 /* TopView.swift */; };
 		32350FEA1E3694DD00AEB1C1 /* HostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE71E3694DD00AEB1C1 /* HostCell.swift */; };
+		4A66C75BEB4D80E648E604FB /* Pods_LANScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C144A5528EDCB8CF69FE560 /* Pods_LANScan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C144A5528EDCB8CF69FE560 /* Pods_LANScan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LANScan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F395F1AF363BFA58C05E4DA /* Pods-LANScanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScanTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LANScanTests/Pods-LANScanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		32350FBE1E36936200AEB1C1 /* LANScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LANScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32350FC11E36936200AEB1C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32350FC81E36936200AEB1C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +46,10 @@
 		32350FE51E3694DD00AEB1C1 /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		32350FE61E3694DD00AEB1C1 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		32350FE71E3694DD00AEB1C1 /* HostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostCell.swift; sourceTree = "<group>"; };
+		4CEBB13C923ECADA6ED046B2 /* Pods-LANScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScan/Pods-LANScan.release.xcconfig"; sourceTree = "<group>"; };
+		8E5DF4CDEFB2558015119594 /* Pods_LANScanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LANScanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEC25BB06EF4212C450470FD /* Pods-LANScanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScanTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScanTests/Pods-LANScanTests.release.xcconfig"; sourceTree = "<group>"; };
+		E521D472E10FF26B68C0495A /* Pods-LANScan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LANScan/Pods-LANScan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A66C75BEB4D80E648E604FB /* Pods_LANScan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				129CDFFF43C0A916BF010F46 /* Pods_LANScanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +78,8 @@
 				32350FC01E36936200AEB1C1 /* LANScan */,
 				32350FD51E36936200AEB1C1 /* LANScanTests */,
 				32350FBF1E36936200AEB1C1 /* Products */,
+				599A0495CB96567E18751F46 /* Pods */,
+				6563F552F23CD0DD2DB8A614 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +133,26 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		599A0495CB96567E18751F46 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E521D472E10FF26B68C0495A /* Pods-LANScan.debug.xcconfig */,
+				4CEBB13C923ECADA6ED046B2 /* Pods-LANScan.release.xcconfig */,
+				2F395F1AF363BFA58C05E4DA /* Pods-LANScanTests.debug.xcconfig */,
+				BEC25BB06EF4212C450470FD /* Pods-LANScanTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6563F552F23CD0DD2DB8A614 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C144A5528EDCB8CF69FE560 /* Pods_LANScan.framework */,
+				8E5DF4CDEFB2558015119594 /* Pods_LANScanTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,9 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32350FDB1E36936200AEB1C1 /* Build configuration list for PBXNativeTarget "LANScan" */;
 			buildPhases = (
+				C21943C5E4D45B2C35C915EA /* [CP] Check Pods Manifest.lock */,
 				32350FBA1E36936200AEB1C1 /* Sources */,
 				32350FBB1E36936200AEB1C1 /* Frameworks */,
 				32350FBC1E36936200AEB1C1 /* Resources */,
+				70CDD2C37E4662FF30F2E136 /* [CP] Embed Pods Frameworks */,
+				31A26D1F2D7A0A69F67D0532 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,9 +180,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32350FDE1E36936200AEB1C1 /* Build configuration list for PBXNativeTarget "LANScanTests" */;
 			buildPhases = (
+				2F1B85467B2EF0F733CD709D /* [CP] Check Pods Manifest.lock */,
 				32350FCE1E36936200AEB1C1 /* Sources */,
 				32350FCF1E36936200AEB1C1 /* Frameworks */,
 				32350FD01E36936200AEB1C1 /* Resources */,
+				BF3E44C215A1E0CBF5C70CFD /* [CP] Embed Pods Frameworks */,
+				4A9CD697E433408784B46CB8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,6 +257,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F1B85467B2EF0F733CD709D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		31A26D1F2D7A0A69F67D0532 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LANScan/Pods-LANScan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A9CD697E433408784B46CB8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LANScanTests/Pods-LANScanTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70CDD2C37E4662FF30F2E136 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LANScan/Pods-LANScan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF3E44C215A1E0CBF5C70CFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LANScanTests/Pods-LANScanTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C21943C5E4D45B2C35C915EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32350FBA1E36936200AEB1C1 /* Sources */ = {
@@ -359,6 +490,7 @@
 		};
 		32350FDC1E36936200AEB1C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E521D472E10FF26B68C0495A /* Pods-LANScan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y7K9K4R5AQ;
@@ -372,6 +504,7 @@
 		};
 		32350FDD1E36936200AEB1C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CEBB13C923ECADA6ED046B2 /* Pods-LANScan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y7K9K4R5AQ;
@@ -385,6 +518,7 @@
 		};
 		32350FDF1E36936200AEB1C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F395F1AF363BFA58C05E4DA /* Pods-LANScanTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -400,6 +534,7 @@
 		};
 		32350FE01E36936200AEB1C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEC25BB06EF4212C450470FD /* Pods-LANScanTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

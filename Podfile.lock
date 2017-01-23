@@ -1,0 +1,27 @@
+PODS:
+  - Alamofire (4.3.0)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SnapKit (3.1.2)
+  - SpinKit (1.2.0)
+
+DEPENDENCIES:
+  - Alamofire (= 4.3.0)
+  - ReactiveCocoa (= 2.5)
+  - SnapKit (= 3.1.2)
+  - SpinKit (~> 1.2)
+
+SPEC CHECKSUMS:
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+  SpinKit: 65906a8b534a4e14cbfd3f8b0b6c329131faef4a
+
+PODFILE CHECKSUM: c2713fcc7f920dbbb8e5bffb09465bc1f06531e5
+
+COCOAPODS: 1.1.1
