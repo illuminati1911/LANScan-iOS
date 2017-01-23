@@ -13,6 +13,9 @@
 		32350FD71E36936200AEB1C1 /* LANScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FD61E36936200AEB1C1 /* LANScanTests.swift */; };
 		32350FE31E3694A200AEB1C1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE11E3694A200AEB1C1 /* MainViewController.swift */; };
 		32350FE41E3694A200AEB1C1 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE21E3694A200AEB1C1 /* ScanViewController.swift */; };
+		32350FE81E3694DD00AEB1C1 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE51E3694DD00AEB1C1 /* ScanView.swift */; };
+		32350FE91E3694DD00AEB1C1 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE61E3694DD00AEB1C1 /* TopView.swift */; };
+		32350FEA1E3694DD00AEB1C1 /* HostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE71E3694DD00AEB1C1 /* HostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		32350FD81E36936200AEB1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32350FE11E3694A200AEB1C1 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		32350FE21E3694A200AEB1C1 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		32350FE51E3694DD00AEB1C1 /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		32350FE61E3694DD00AEB1C1 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		32350FE71E3694DD00AEB1C1 /* HostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				32350FC11E36936200AEB1C1 /* AppDelegate.swift */,
-				32350FE11E3694A200AEB1C1 /* MainViewController.swift */,
-				32350FE21E3694A200AEB1C1 /* ScanViewController.swift */,
 				32350FC81E36936200AEB1C1 /* Assets.xcassets */,
 				32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */,
 				32350FCD1E36936200AEB1C1 /* Info.plist */,
+				32350FEB1E3694EE00AEB1C1 /* ViewControllers */,
+				32350FEC1E3694F700AEB1C1 /* Views */,
 			);
 			path = LANScan;
 			sourceTree = "<group>";
@@ -94,6 +100,25 @@
 				32350FD81E36936200AEB1C1 /* Info.plist */,
 			);
 			path = LANScanTests;
+			sourceTree = "<group>";
+		};
+		32350FEB1E3694EE00AEB1C1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				32350FE11E3694A200AEB1C1 /* MainViewController.swift */,
+				32350FE21E3694A200AEB1C1 /* ScanViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		32350FEC1E3694F700AEB1C1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32350FE51E3694DD00AEB1C1 /* ScanView.swift */,
+				32350FE61E3694DD00AEB1C1 /* TopView.swift */,
+				32350FE71E3694DD00AEB1C1 /* HostCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				32350FE31E3694A200AEB1C1 /* MainViewController.swift in Sources */,
+				32350FE91E3694DD00AEB1C1 /* TopView.swift in Sources */,
+				32350FE81E3694DD00AEB1C1 /* ScanView.swift in Sources */,
 				32350FC21E36936200AEB1C1 /* AppDelegate.swift in Sources */,
 				32350FE41E3694A200AEB1C1 /* ScanViewController.swift in Sources */,
+				32350FEA1E3694DD00AEB1C1 /* HostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
