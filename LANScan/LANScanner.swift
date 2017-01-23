@@ -43,19 +43,16 @@ class LANScanner {
     
     static private func signalForHostnamesAndMAC(hosts:Any?) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
-            let signals = ((hosts as! RACTuple).allObjects() as! Array<String>)
-                .filter { $0 != Constants.PING_HOST_NOT_FOUND }
-                .map { HostnameResolver.getHost(ip: $0) }
-            RACSignal.combineLatest(signals as NSArray)
-                .map({ (hosts:Any?) -> Any? in
-                    return (hosts as! RACTuple).allObjects().map { MacFinder.addMacToHost(host: $0 as! Host) }
-                }).subscribeNext({ (hosts:Any?) in
-                    subscriber?.sendNext(hosts)
-                    subscriber?.sendCompleted()
-                })
-            
-            /*subscriber?.sendNext(hosts.map { MacFinder.addMacToHost(host: $0 as! Host) })
-             subscriber?.sendCompleted()*/
+            (((hosts as! RACTuple).allObjects() as! Array<String>)
+            .filter { $0 != Constants.PING_HOST_NOT_FOUND }
+            .map { HostnameResolver.getHost(ip: $0) } as NSArray
+            |> RACSignal.combineLatest)
+            .map({ (hosts:Any?) -> Any? in
+                return (hosts as! RACTuple).allObjects().map { MacFinder.addMacToHost(host: $0 as! Host) }
+            }).subscribeNext({ (hosts:Any?) in
+                subscriber?.sendNext(hosts)
+                subscriber?.sendCompleted()
+            })
             
             return RACDisposable(block: {
             })
