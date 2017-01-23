@@ -13,22 +13,23 @@ let macAPIAddress = "https://api.macvendors.com/"
 
 class APIManager {
     
-    static func signalForManufacturers(hosts:Array<Host>) -> RACSignal {
-            let signals = hosts.map { signalForManufacturer(host: $0) }
-            return RACSignal.combineLatest(signals as NSArray)
+    static func signalForManufacturers(hosts:Any?) -> RACSignal {
+        let hosts = hosts as! Array<Host>
+        let signals = hosts.map { signalForManufacturer(host: $0) }
+        return RACSignal.combineLatest(signals as NSArray)
     }
 
     static func signalForManufacturer(host:Host) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
-            Alamofire.request("\(macAPIAddress)\(host.macAddress!)").responseString { response in
-                print("Success: \(response.result.isSuccess)")
-                print("Response String: \(response.result.value)")
-                if(response.result.isSuccess){
-                    subscriber?.sendNext(Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: host.macAddress, manufacturer: response.result.value))
-                    subscriber?.sendCompleted()
-                } else {
-                    subscriber?.sendNext(Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: host.macAddress, manufacturer: Constants.MANUFACTURER_NOT_FOUND))
-                    subscriber?.sendCompleted()
+            DispatchQueue.global().async {
+                Alamofire.request("\(macAPIAddress)\(host.macAddress!)").responseString { response in
+                    if(response.result.isSuccess){
+                        subscriber?.sendNext(Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: host.macAddress, manufacturer: response.result.value))
+                        subscriber?.sendCompleted()
+                    } else {
+                        subscriber?.sendNext(Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: host.macAddress, manufacturer: Constants.MANUFACTURER_NOT_FOUND))
+                        subscriber?.sendCompleted()
+                    }
                 }
             }
             

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 // http://stackoverflow.com/questions/33632266/animate-text-change-of-uilabel
 extension UIView {
@@ -22,9 +23,17 @@ extension UIView {
 }
 
 extension HostnameResolver {
-    static func getHost(ip:String) -> Host {
-        let hostname = HostnameResolver.getHostFromIPAddress((ip as NSString).cString(using: String.Encoding.ascii.rawValue))
-        return Host(ipAddress: ip, hostname: hostname, macAddress: nil, manufacturer: nil)
+    static func getHost(ip:String) -> RACSignal {
+        return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
+            DispatchQueue.global().async {
+                let hostname = HostnameResolver.getHostFromIPAddress((ip as NSString).cString(using: String.Encoding.ascii.rawValue))
+                subscriber?.sendNext(Host(ipAddress: ip, hostname: hostname, macAddress: nil, manufacturer: nil))
+                subscriber?.sendCompleted()
+            }
+            
+            return RACDisposable(block: {
+            })
+        })
     }
 }
 

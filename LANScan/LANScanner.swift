@@ -12,16 +12,17 @@ class LANScanner {
     
     static func scanNetworkForHosts() -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
-            LANScanner.scan().subscribeNext({ (hosts:Any?) in
-                DispatchQueue.global().async {
-                    (getHostnamesAndMac(hosts: hosts) |> APIManager.signalForManufacturers)
-                        .deliverOnMainThread()
-                        .subscribeNext({ (hosts:Any?) in
-                            subscriber?.sendNext(hosts)
-                            subscriber?.sendCompleted()
-                        })
-                }
-            })
+            LANScanner.scan()
+                .flattenMap({ (hosts:Any?) -> RACSignal! in
+                    return hosts |> signalForHostnamesAndMAC
+                }).flattenMap({ (hosts:Any?) -> RACStream? in
+                    return hosts |> APIManager.signalForManufacturers
+                })
+                .deliverOnMainThread()
+                .subscribeNext({ (hosts:Any?) in
+                    subscriber?.sendNext(hosts)
+                    subscriber?.sendCompleted()
+                })
             
             return RACDisposable(block: {
             })
@@ -40,11 +41,25 @@ class LANScanner {
         return RACSignal()
     }
     
-    static private func getHostnamesAndMac(hosts:Any?) -> [Host] {
-        return ((hosts as! RACTuple).allObjects() as! Array<String>)
-            .filter { $0 != Constants.PING_HOST_NOT_FOUND }
-            .map { HostnameResolver.getHost(ip: $0) }
-            .map { MacFinder.addMacToHost(host: $0) }
+    static private func signalForHostnamesAndMAC(hosts:Any?) -> RACSignal {
+        return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
+            let signals = ((hosts as! RACTuple).allObjects() as! Array<String>)
+                .filter { $0 != Constants.PING_HOST_NOT_FOUND }
+                .map { HostnameResolver.getHost(ip: $0) }
+            RACSignal.combineLatest(signals as NSArray)
+                .map({ (hosts:Any?) -> Any? in
+                    return (hosts as! RACTuple).allObjects().map { MacFinder.addMacToHost(host: $0 as! Host) }
+                }).subscribeNext({ (hosts:Any?) in
+                    subscriber?.sendNext(hosts)
+                    subscriber?.sendCompleted()
+                })
+            
+            /*subscriber?.sendNext(hosts.map { MacFinder.addMacToHost(host: $0 as! Host) })
+             subscriber?.sendCompleted()*/
+            
+            return RACDisposable(block: {
+            })
+        })
     }
     
     static private func getIPPrefix() -> String {
