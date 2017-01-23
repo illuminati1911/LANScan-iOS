@@ -46,6 +46,7 @@
 		32350FE51E3694DD00AEB1C1 /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		32350FE61E3694DD00AEB1C1 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		32350FE71E3694DD00AEB1C1 /* HostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostCell.swift; sourceTree = "<group>"; };
+		324F2BAE1E36975900CAC273 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		4CEBB13C923ECADA6ED046B2 /* Pods-LANScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScan/Pods-LANScan.release.xcconfig"; sourceTree = "<group>"; };
 		8E5DF4CDEFB2558015119594 /* Pods_LANScanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LANScanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC25BB06EF4212C450470FD /* Pods-LANScanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScanTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScanTests/Pods-LANScanTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 				32350FC81E36936200AEB1C1 /* Assets.xcassets */,
 				32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */,
 				32350FCD1E36936200AEB1C1 /* Info.plist */,
+				324F2BAF1E36975C00CAC273 /* Fonts */,
 				32350FEB1E3694EE00AEB1C1 /* ViewControllers */,
 				32350FEC1E3694F700AEB1C1 /* Views */,
 			);
@@ -131,6 +133,14 @@
 				32350FE71E3694DD00AEB1C1 /* HostCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		324F2BAF1E36975C00CAC273 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				324F2BAE1E36975900CAC273 /* PressStart2P-Regular.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		599A0495CB96567E18751F46 /* Pods */ = {
@@ -567,6 +577,7 @@
 				32350FDD1E36936200AEB1C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		32350FDE1E36936200AEB1C1 /* Build configuration list for PBXNativeTarget "LANScanTests" */ = {
 			isa = XCConfigurationList;
@@ -575,6 +586,7 @@
 				32350FE01E36936200AEB1C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
