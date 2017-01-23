@@ -32,6 +32,7 @@
 		324F2BD81E36991200CAC273 /* HostnameResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BD61E36991200CAC273 /* HostnameResolver.m */; };
 		324F2BDC1E36993400CAC273 /* LANScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BDA1E36993400CAC273 /* LANScanner.swift */; };
 		324F2BDD1E36993400CAC273 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BDB1E36993400CAC273 /* APIManager.swift */; };
+		324F2BDF1E369AC000CAC273 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 324F2BAE1E36975900CAC273 /* PressStart2P-Regular.ttf */; };
 		4A66C75BEB4D80E648E604FB /* Pods_LANScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C144A5528EDCB8CF69FE560 /* Pods_LANScan.framework */; };
 /* End PBXBuildFile section */
 
@@ -383,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32350FCC1E36936200AEB1C1 /* LaunchScreen.storyboard in Resources */,
+				324F2BDF1E369AC000CAC273 /* PressStart2P-Regular.ttf in Resources */,
 				324F2BB21E3697AE00CAC273 /* radio.png in Resources */,
 				32350FC91E36936200AEB1C1 /* Assets.xcassets in Resources */,
 				324F2BB31E3697AE00CAC273 /* apple_logo.png in Resources */,
@@ -649,6 +651,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Y7K9K4R5AQ;
 				INFOPLIST_FILE = LANScan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ville.LANScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -666,6 +669,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Y7K9K4R5AQ;
 				INFOPLIST_FILE = LANScan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ville.LANScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
