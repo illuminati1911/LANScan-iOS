@@ -21,6 +21,8 @@ struct Constants {
     
     // API results
     static let APPLE_COMPANY_NAME = "Apple, Inc."
+    static let LG_ELECTRONICS_COMPANY_NAME = "LG Electronics"
+    static let VENDOR_NOT_FOUND_RESPONSE = "Vendor not found\n"
     
     static let EMPTY = ""
 }
