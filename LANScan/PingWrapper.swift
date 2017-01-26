@@ -60,7 +60,7 @@ class PingWrapper: NSObject, SimplePingDelegate {
 
     
     func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
-        self.timeoutTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
+        self.timeoutTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
         self.ping.send(with: nil)
     }
     
@@ -75,7 +75,7 @@ class PingWrapper: NSObject, SimplePingDelegate {
     
     func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) {
         //self.host(found: false)
-        //print("ERROR UNEXPECTED :D \(self.hostName)");
+        //print("ERROR UNEXPECTED \(self.hostName)");
         //print(packet.description)
     }
     

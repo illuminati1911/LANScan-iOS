@@ -26,7 +26,8 @@ extension HostnameResolver {
     static func getHost(ip:String) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
             DispatchQueue.global().async {
-                let hostname = HostnameResolver.getHostFromIPAddress((ip as NSString).cString(using: String.Encoding.ascii.rawValue))
+                var hostname = HostnameResolver.getHostFromIPAddress((ip as NSString).cString(using: String.Encoding.ascii.rawValue))
+                if (hostname == ip) { hostname = "Generic device"}
                 subscriber?.sendNext(Host(ipAddress: ip, hostname: hostname, macAddress: nil, manufacturer: nil))
                 subscriber?.sendCompleted()
             }
