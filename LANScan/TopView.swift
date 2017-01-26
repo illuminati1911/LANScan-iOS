@@ -55,6 +55,21 @@ class TopView: UIView {
         self.titleText.text = text
     }
     
+    func initScanView() {
+        self.scanButton.isHidden = false
+        self.setUIModeToScanning()
+    }
+    
+    func setUIModeToScanning() {
+        self.setStatusText(text: Constants.STATUS_TITLE_SCANNING)
+        self.scanButton.isEnabled = false
+    }
+    
+    func setUIModeToFinished(hostCount:Int) {
+        self.setStatusText(text: "\(hostCount) \(Constants.STATUS_TITLE_HOSTS_FOUND)")
+        self.scanButton.isEnabled = true
+    }
+    
     func scanButtonPressed(sender:AnyObject) {
         self.delegate?.didPressScan()
     }

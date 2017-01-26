@@ -65,6 +65,33 @@ class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func initScanView() {
+        UIView.animate(withDuration: 0.7, animations: { 
+            self.scanButton.alpha = 0.0
+            self.scanningList.alpha = 1.0
+        }) { (Bool) in
+            self.showLoadingSpinner(show: true)
+        }
+    }
+    
+    func setUIModeToScanning() {
+        self.foundHosts = []
+        self.scanningList.reloadData()
+        self.showLoadingSpinner(show: true)
+    }
+    
+    func setUIModeToFinished() {
+        self.showLoadingSpinner(show: false)
+    }
+    
+    func showLoadingSpinner(show:Bool) {
+        self.spinner.isHidden = !show
+    }
+    
+    func scanButtonPressed(sender:AnyObject) {
+        self.delegate?.didPressInitialScan()
+    }
+    
     private func makeConstraints() {
         self.scanButton.snp.makeConstraints { (make) in
             make.center.equalTo(self)
@@ -79,23 +106,6 @@ class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
         self.spinner.snp.makeConstraints { (make) in
             make.center.equalTo(self)
         }
-    }
-    
-    func scanButtonPressed(sender:AnyObject) {
-        self.delegate?.didPressInitialScan()
-    }
-    
-    func openScanView() {
-        UIView.animate(withDuration: 0.7, animations: { 
-            self.scanButton.alpha = 0.0
-            self.scanningList.alpha = 1.0
-        }) { (Bool) in
-            self.showLoadingSpinner(show: true)
-        }
-    }
-    
-    func showLoadingSpinner(show:Bool) {
-        self.spinner.isHidden = !show
     }
     
     //-------------------- DELEGATES--------------------//

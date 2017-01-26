@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		129CDFFF43C0A916BF010F46 /* Pods_LANScanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5DF4CDEFB2558015119594 /* Pods_LANScanTests.framework */; };
+		322C6F271E3A2A1C00F08F0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BB81E36983800CAC273 /* Constants.swift */; };
+		322C6F291E3A2A2600F08F0D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BBA1E36983800CAC273 /* Utils.swift */; };
 		32350FC21E36936200AEB1C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FC11E36936200AEB1C1 /* AppDelegate.swift */; };
 		32350FC91E36936200AEB1C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32350FC81E36936200AEB1C1 /* Assets.xcassets */; };
 		32350FCC1E36936200AEB1C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */; };
@@ -524,7 +526,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				322C6F291E3A2A2600F08F0D /* Utils.swift in Sources */,
 				32350FD71E36936200AEB1C1 /* LANScanTests.swift in Sources */,
+				322C6F271E3A2A1C00F08F0D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

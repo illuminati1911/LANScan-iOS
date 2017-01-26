@@ -35,7 +35,7 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
         self.topView.installBottomBorder()
     }
     
-    //-------------------- NETWORK SCANNING --------------------//
+    //-------------------- NETWORK --------------------//
     
     func isOnWiFi() -> Bool {
         let isOnWiFi = WiFiCheck().isOnWiFi()
@@ -48,7 +48,7 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
     func startScanning() {
         LANScanner.scanNetworkForHosts().subscribeNext { (hosts:Any?) in
             let finalHosts = ((hosts as! RACTuple).allObjects() as! Array<Host>)
-            self.setUIToIdle(hostCount: finalHosts.count)
+            self.setUIToFinished(hostCount: finalHosts.count)
             self.scanView.foundHosts = finalHosts
             self.scanView.scanningList.reloadData()
         }
@@ -58,10 +58,8 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
     
     func didPressInitialScan() {
         if(self.isOnWiFi()){
-            self.scanView.openScanView()
-            self.topView.setStatusText(text: Constants.STATUS_TITLE_SCANNING)
-            self.topView.scanButton.isEnabled = false
-            self.topView.scanButton.isHidden = false
+            self.scanView.initScanView()
+            self.topView.initScanView()
             self.startScanning()
         }
     }
@@ -76,17 +74,13 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
     //-------------------- UI ACTIONS/ANIMATIONS --------------------//
     
     func setUIToScanning() {
-        self.topView.setStatusText(text: Constants.STATUS_TITLE_SCANNING)
-        self.topView.scanButton.isEnabled = false
-        self.scanView.foundHosts = []
-        self.scanView.scanningList.reloadData()
-        self.scanView.showLoadingSpinner(show: true)
+        self.topView.setUIModeToScanning()
+        self.scanView.setUIModeToScanning()
     }
     
-    func setUIToIdle(hostCount:Int) {
-        self.scanView.showLoadingSpinner(show: false)
-        self.topView.setStatusText(text: "\(hostCount) \(Constants.STATUS_TITLE_HOSTS_FOUND)")
-        self.topView.scanButton.isEnabled = true
+    func setUIToFinished(hostCount:Int) {
+        self.topView.setUIModeToFinished(hostCount: hostCount)
+        self.scanView.setUIModeToFinished()
     }
     
     func presentNoWiFiWarning() {
@@ -95,6 +89,8 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
         alert.addAction(defaultButton)
         present(alert, animated: true)
     }
+    
+    //-------------------- CONSTRAINTS --------------------//
     
     func makeConstraints() {
         self.topView.snp.makeConstraints { (make) in
