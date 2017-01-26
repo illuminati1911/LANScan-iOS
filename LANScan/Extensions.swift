@@ -40,7 +40,7 @@ extension HostnameResolver {
 
 extension MacFinder {
     static func addMacToHost(host:Host) -> Host {
-        var mac = MacFinder.ip2mac(host.ipAddress)
+        var mac = MacFinder.ip(toMac:(host.ipAddress! as NSString).cString(using: String.Encoding.ascii.rawValue))
         if (mac == nil) { mac = Constants.EMPTY }
         return Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: mac, manufacturer: nil)
     }

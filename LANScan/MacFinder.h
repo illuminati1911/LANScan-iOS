@@ -1,10 +1,5 @@
-//
-//  MacFinder.h
-//  MacFinder
-//
-//  Created by Michael Mavris on 08/06/16.
-//  Copyright © 2016 Miksoft. All rights reserved.
-//
+// Solve MAC with raw sockets after iOS 10.2 update
+//https://github.com/mavris/MMLanScan/issues/3
 
 #import <Foundation/Foundation.h>
 #include <sys/param.h>
@@ -40,6 +35,6 @@
 
 @interface MacFinder : NSObject;
 
-+(NSString*)ip2mac:(NSString*)strIP;
++ (NSString *) ipToMac:(const char*) host;
 
 @end
