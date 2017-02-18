@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol TopViewDelegate {
+protocol TopViewDelegate: class {
     func didPressScan()
 }
 
 class TopView: UIView {
 
-    var delegate:TopViewDelegate?
+    weak var delegate:TopViewDelegate?
     var titleText:UILabel!
     var scanButton:UIButton!
     var searchButton:UIButton!

@@ -21,8 +21,9 @@ class APIManager {
 
     static func signalForManufacturer(host:Host) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
+            let datarequest = Alamofire.request("\(macAPIAddress)\(host.macAddress!)")
             DispatchQueue.global().async {
-                Alamofire.request("\(macAPIAddress)\(host.macAddress!)").responseString { response in
+                datarequest.responseString { response in
                     if(response.result.isSuccess){
                         subscriber?.sendNext(Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: host.macAddress, manufacturer: response.result.value))
                         subscriber?.sendCompleted()
@@ -34,6 +35,7 @@ class APIManager {
             }
             
             return RACDisposable(block: {
+                datarequest.cancel()
             })
         }).subscribe(on: RACScheduler(priority: RACSchedulerPriorityBackground))
     }

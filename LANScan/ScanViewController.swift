@@ -46,7 +46,7 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
     }
     
     func startScanning() {
-        LANScanner.scanNetworkForHosts().subscribeNext { (hosts:Any?) in
+        LANScanner.scanNetworkForHosts().subscribeNext { [unowned self] (hosts:Any?) in
             let finalHosts = ((hosts as! RACTuple).allObjects() as! Array<Host>)
             self.setUIToFinished(hostCount: finalHosts.count)
             self.scanView.foundHosts = finalHosts

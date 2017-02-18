@@ -9,7 +9,7 @@
 import UIKit
 import SpinKit
 
-protocol ScanViewDelegate {
+protocol ScanViewDelegate: class {
     func didPressInitialScan()
 }
 
@@ -18,7 +18,7 @@ class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
     var scanButton:UIButton!
     var scanningList:UITableView!
     var spinner:RTSpinKitView!
-    var delegate:ScanViewDelegate?
+    weak var delegate:ScanViewDelegate?
     var foundHosts:Array<Host> = []
     
     override init(frame: CGRect) {
