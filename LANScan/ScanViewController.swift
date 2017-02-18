@@ -15,6 +15,7 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
     var topView:TopView!
     var scanView:ScanView!
     var pingers:Array<PingWrapper>?
+    var hosts:Array<Host> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
         LANScanner.scanNetworkForHosts().subscribeNext { [unowned self] (hosts:Any?) in
             let finalHosts = ((hosts as! RACTuple).allObjects() as! Array<Host>)
             self.setUIToFinished(hostCount: finalHosts.count)
+            self.hosts = finalHosts
             self.scanView.foundHosts = finalHosts
             self.scanView.scanningList.reloadData()
         }
@@ -69,6 +71,12 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
             self.setUIToScanning()
             self.startScanning()
         }
+    }
+    
+    func didSelectTargetDevice(index: Int) {
+        let deviceVC:DeviceViewController = DeviceViewController()
+        deviceVC.modalTransitionStyle = .flipHorizontal
+        self.present(deviceVC, animated: true, completion: nil)
     }
     
     //-------------------- UI ACTIONS/ANIMATIONS --------------------//

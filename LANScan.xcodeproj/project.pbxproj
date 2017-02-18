@@ -36,6 +36,7 @@
 		324F2BDC1E36993400CAC273 /* LANScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BDA1E36993400CAC273 /* LANScanner.swift */; };
 		324F2BDD1E36993400CAC273 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324F2BDB1E36993400CAC273 /* APIManager.swift */; };
 		324F2BDF1E369AC000CAC273 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 324F2BAE1E36975900CAC273 /* PressStart2P-Regular.ttf */; };
+		32F1CA471E5846B1005838CF /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1CA461E5846B1005838CF /* DeviceViewController.swift */; };
 		4A66C75BEB4D80E648E604FB /* Pods_LANScan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C144A5528EDCB8CF69FE560 /* Pods_LANScan.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		324F2BD71E36991200CAC273 /* HostnameResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostnameResolver.h; sourceTree = "<group>"; };
 		324F2BDA1E36993400CAC273 /* LANScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LANScanner.swift; sourceTree = "<group>"; };
 		324F2BDB1E36993400CAC273 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		32F1CA461E5846B1005838CF /* DeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
 		4CEBB13C923ECADA6ED046B2 /* Pods-LANScan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScan.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScan/Pods-LANScan.release.xcconfig"; sourceTree = "<group>"; };
 		8E5DF4CDEFB2558015119594 /* Pods_LANScanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LANScanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC25BB06EF4212C450470FD /* Pods-LANScanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LANScanTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LANScanTests/Pods-LANScanTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				32350FE11E3694A200AEB1C1 /* MainViewController.swift */,
 				32350FE21E3694A200AEB1C1 /* ScanViewController.swift */,
+				32F1CA461E5846B1005838CF /* DeviceViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				324F2BD81E36991200CAC273 /* HostnameResolver.m in Sources */,
 				324F2BBD1E36983800CAC273 /* Utils.swift in Sources */,
 				324F2BCC1E3698B000CAC273 /* IPAddress.swift in Sources */,
+				32F1CA471E5846B1005838CF /* DeviceViewController.swift in Sources */,
 				32350FC21E36936200AEB1C1 /* AppDelegate.swift in Sources */,
 				324F2BC31E36987200CAC273 /* PingWrapper.swift in Sources */,
 				32350FE41E3694A200AEB1C1 /* ScanViewController.swift in Sources */,

@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
         
         self.scanViewController = ScanViewController()
         self.view.addSubview(self.scanViewController.view)
+        self.addChildViewController(self.scanViewController)
         
         makeConstraints()
     }

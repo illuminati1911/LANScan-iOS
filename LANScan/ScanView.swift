@@ -11,6 +11,7 @@ import SpinKit
 
 protocol ScanViewDelegate: class {
     func didPressInitialScan()
+    func didSelectTargetDevice(index:Int)
 }
 
 class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
@@ -124,7 +125,7 @@ class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:HostCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HostCell
-        
+    
         cell.hostnameLabel.text = foundHosts[indexPath.row].hostname
         cell.ipLabel.text = foundHosts[indexPath.row].ipAddress
         cell.macLabel.text = foundHosts[indexPath.row].macAddress
@@ -132,5 +133,9 @@ class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
         cell.setVendorImage(vendor: foundHosts[indexPath.row].manufacturer!)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.didSelectTargetDevice(index: indexPath.row)
     }
 }
