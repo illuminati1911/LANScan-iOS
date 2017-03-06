@@ -29,18 +29,14 @@ class DeviceViewController: UIViewController {
         self.view.addSubview(self.portScanTerminal!)
         
         self.portScanTerminal?.insertText("\n")
-        self.portScanTerminal?.insertText("Starting Nmap 7.40 ( https://nmap.org ) at 2017-02-26 11:27 EET\n")
-        self.portScanTerminal?.insertText("Nmap scan report for 192.168.1.1\n")
-        self.portScanTerminal?.insertText("Host is up (0.0093s latency).\n")
-        self.portScanTerminal?.insertText("Not shown: 995 closed ports\n")
-        self.portScanTerminal?.insertText("PORT     STATE SERVICE\n")
-        self.portScanTerminal?.insertText("53/tcp   open  domain\n")
-        self.portScanTerminal?.insertText("80/tcp   open  http\n")
-        self.portScanTerminal?.insertText("515/tcp  open  printer\n")
-        self.portScanTerminal?.insertText("9100/tcp open  jetdirect\n")
-        self.portScanTerminal?.insertText("9998/tcp open  distinct32\n")
-        self.portScanTerminal?.insertText("\n")
-        self.portScanTerminal?.insertText("Nmap done: 1 IP address (1 host up) scanned in 0.20 seconds\n")
+        self.portScanTerminal?.insertText("Scanning for services in \(host?.ipAddress ?? "UNKNOWN")\n")
+        
+        if let uHost = self.host {
+            PortScanner.scanPortsOn(host: uHost).subscribeNext { (services:Any?) in
+                let printable = services as? [String] ?? []
+                printable.forEach { self.portScanTerminal?.insertText("SERVICE FOUND ON PORT: \($0)\n") }
+            }
+        }
         
         self.makeConstraints()
     }

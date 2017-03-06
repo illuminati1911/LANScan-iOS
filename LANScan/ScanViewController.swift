@@ -74,7 +74,7 @@ class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
     }
     
     func didSelectTargetDevice(index: Int) {
-        let deviceVC:DeviceViewController = DeviceViewController()
+        let deviceVC:DeviceViewController = DeviceViewController(host: hosts[index])
         deviceVC.modalTransitionStyle = .flipHorizontal
         self.present(deviceVC, animated: true, completion: nil)
     }

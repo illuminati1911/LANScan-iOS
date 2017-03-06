@@ -9,6 +9,7 @@
 struct Constants {
     static let PING_HOST_NOT_FOUND = "PING_HOST_NOT_FOUND"
     static let NO_WIFI_ADDRESS = "NO_WIFI_ADDRESS"
+    static let NO_SERVICE = "NO_SERVICE"
     
     // UI Text
     static let NOTIFICATION_NO_WIFI_TITLE = "No WiFi"

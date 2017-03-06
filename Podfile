@@ -8,6 +8,7 @@ target 'LANScan' do
   pod 'Alamofire', '4.3.0'
   pod 'SnapKit', '3.1.2'
   pod 'SpinKit', '~> 1.2'
+  pod 'SwiftSocket', '2.0.1'
 
   target 'LANScanTests' do
     inherit! :search_paths
