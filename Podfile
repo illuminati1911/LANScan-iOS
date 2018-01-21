@@ -6,7 +6,7 @@ target 'LANScan' do
   use_frameworks!
   pod 'ReactiveCocoa', '2.5'
   pod 'Alamofire', '4.3.0'
-  pod 'SnapKit', '3.1.2'
+  pod 'SnapKit', '4.0.0'
   pod 'SpinKit', '~> 1.2'
   pod 'SwiftSocket', '2.0.1'
 

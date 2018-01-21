@@ -20,7 +20,7 @@ class HackerTerminal: UITextView {
         // To get line spacing. Yes, it's a hack.
         let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5
-        self.attributedText = NSAttributedString(string: " ", attributes: [NSParagraphStyleAttributeName : paragraphStyle])
+        self.attributedText = NSAttributedString(string: " ", attributes: [NSAttributedStringKey.paragraphStyle : paragraphStyle])
         
         self.backgroundColor = UIColor.black
         self.textColor = UIColor(red:0.13, green:0.76, blue:0.05, alpha:1.0)
@@ -52,7 +52,7 @@ class HackerTerminal: UITextView {
         self.isTyping = true
         DispatchQueue.global(qos: .background).async {
             while self.buffer.count > 0 {
-                let characters = self.buffer.remove(at: 0).characters
+                let characters = self.buffer.remove(at: 0)
                 characters.forEach { c in self.writeToUIAndWait(char:c) }
             }
             self.isTyping = false

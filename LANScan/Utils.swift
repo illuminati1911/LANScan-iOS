@@ -8,7 +8,13 @@
 
 import UIKit
 
-infix operator |> { associativity left precedence 80 }
+infix operator |> : pipe
+
+precedencegroup pipe {
+    associativity: left
+    higherThan: LogicalConjunctionPrecedence
+}
+//{ associativity left precedence 80 }
 
 func |> <T, U>(value: T, function: ((T) -> U)) -> U {
     return function(value)

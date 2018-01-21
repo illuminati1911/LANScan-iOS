@@ -12,7 +12,7 @@
 #include "if_types.h"
 
 #if TARGET_IPHONE_SIMULATOR
-#include <net/route.h>
+//#include <net/route.h>
 #else
 #include "route.h"
 #endif
