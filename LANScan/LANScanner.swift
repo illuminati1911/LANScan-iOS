@@ -70,7 +70,7 @@ class LANScanner {
     
     static private func signalForPing(ping:PingWrapper) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
-            ping.startPing(completion: { (hostname, found) in
+            ping.startPing(callback: { (hostname, found) in
                 if (found) {
                     subscriber!.sendNext(hostname)
                     subscriber!.sendCompleted()

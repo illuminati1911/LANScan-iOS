@@ -18,17 +18,17 @@ class HackerTerminal: UITextView {
         self.init(frame: CGRect.zero)
         
         // To get line spacing. Yes, it's a hack.
+        //
         let paragraphStyle:NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 5
-        self.attributedText = NSAttributedString(string: " ", attributes: [NSAttributedStringKey.paragraphStyle : paragraphStyle])
+        attributedText = NSAttributedString(string: " ", attributes: [NSAttributedStringKey.paragraphStyle : paragraphStyle])
         
-        self.backgroundColor = UIColor.black
-        self.textColor = UIColor(red:0.13, green:0.76, blue:0.05, alpha:1.0)
-        self.font = UIFont(name: "Press Start 2P", size: 8.0)
-        self.tintColor = UIColor.green
-        self.inputView = UIView(frame: CGRect.zero)
+        backgroundColor = UIColor.black
+        textColor = UIColor(red:0.13, green:0.76, blue:0.05, alpha:1.0)
+        font = UIFont(name: "Press Start 2P", size: 8.0)
+        tintColor = UIColor.green
+        inputView = UIView(frame: CGRect.zero)
     }
-    
     
     override func caretRect(for position: UITextPosition) -> CGRect {
         var rect = super.caretRect(for: position)
@@ -37,19 +37,18 @@ class HackerTerminal: UITextView {
         return rect
     }
     
-    
     override func insertText(_ text: String) {
-        self.becomeFirstResponder()
-        self.buffer.append(text)
+        becomeFirstResponder()
+        buffer.append(text)
         
-        guard !self.isTyping else {
+        guard !isTyping else {
             return
         }
         self.writeBufferToConsole()
     }
     
     fileprivate func writeBufferToConsole() {
-        self.isTyping = true
+        isTyping = true
         DispatchQueue.global(qos: .background).async {
             while self.buffer.count > 0 {
                 let characters = self.buffer.remove(at: 0)
@@ -63,8 +62,6 @@ class HackerTerminal: UITextView {
         DispatchQueue.main.async {
             self.text = self.text + String(char)
         }
-        Thread.sleep(forTimeInterval: self.timeInterval ?? 0.002)
+        Thread.sleep(forTimeInterval: timeInterval ?? 0.002)
     }
-    
-
 }

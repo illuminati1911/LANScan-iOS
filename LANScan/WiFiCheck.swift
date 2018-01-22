@@ -13,26 +13,10 @@ class WiFiCheck: NSObject {
     
     func isOnWiFi() -> Bool {
         let host = "http://www.google.com"
-        self.hostReachability = Reachability(hostName: host)
-        //self.reachabilityChanged()
-        if self.hostReachability!.currentReachabilityStatus() == ReachableViaWiFi {
+        hostReachability = Reachability(hostName: host)
+        if hostReachability?.currentReachabilityStatus() == ReachableViaWiFi {
             return true
         }
         return false
     }
-
-    //TODO MAKE THIS EVENT BASED
-    /*func reachabilityChanged() {
-        if self.hostReachability!.currentReachabilityStatus() == ReachableViaWiFi {
-            print("Wifi")
-        }
-            
-        if self.hostReachability!.currentReachabilityStatus() == ReachableViaWWAN {
-            print("4G")
-        }
-            
-        if self.hostReachability!.currentReachabilityStatus() == NotReachable {
-            print("No connection")
-        }
-    }*/
 }

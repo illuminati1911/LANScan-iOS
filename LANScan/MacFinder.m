@@ -4,7 +4,7 @@
 
 + (NSString *) ipToMac:(const char*) host
 {
-    return @"fail";
+    return @"<MAC not available>";
 //#define BUFLEN (sizeof(struct rt_msghdr) + 512)
 //#define SEQ 9999
 //#define RTM_VERSION    5    // important, version 2 does not return a mac address!

@@ -15,33 +15,34 @@ protocol TopViewDelegate: class {
 class TopView: UIView {
 
     weak var delegate:TopViewDelegate?
-    var titleText:UILabel!
-    var scanButton:UIButton!
-    var searchButton:UIButton!
+    
+    private let titleLabel = with(UILabel()) { label in
+        label.font = UIFont(name: "Press Start 2P", size: 12.0)
+        label.textColor = UIColor.white
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = NSTextAlignment.center
+        label.text = Constants.STATUS_TITLE_IDLE
+        label.installShadow(height: 2)
+    }
+    
+    private let scanButton = with(UIButton()) { button in
+        button.setTitle("Scan", for: UIControlState.normal)
+        button.titleLabel?.font = UIFont(name: "Press Start 2P", size: 9.0)
+        button.isHidden = true
+        button.addTarget(self, action: #selector(scanButtonPressed), for: .touchUpInside)
+    }
+    
+    private let searchButton = with(UIButton()) { button in
+        button.titleLabel?.text = "Scan"
+        button.isHidden = true
+    }
     
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)
-        
-        self.titleText = UILabel()
-        self.titleText.font = UIFont(name: "Press Start 2P", size: 12.0)
-        self.titleText.textColor = UIColor.white
-        self.titleText.adjustsFontSizeToFitWidth = true
-        self.titleText.textAlignment = NSTextAlignment.center
-        self.titleText.text = Constants.STATUS_TITLE_IDLE
-        self.titleText.installShadow(height: 2)
-        self.addSubview(self.titleText)
-        
-        self.scanButton = UIButton()
-        self.scanButton.setTitle("Scan", for: UIControlState.normal)
-        self.scanButton.titleLabel?.font = UIFont(name: "Press Start 2P", size: 9.0)
-        self.scanButton.isHidden = true
-        self.scanButton.addTarget(self, action: #selector(scanButtonPressed), for: .touchUpInside)
-        self.addSubview(self.scanButton)
-        
-        self.searchButton = UIButton()
-        self.searchButton.titleLabel?.text = "LOL"
-        self.searchButton.isHidden = true
-        self.addSubview(self.searchButton)
+
+        addSubview(titleLabel)
+        addSubview(scanButton)
+        addSubview(searchButton)
         
         self.makeConstraints()
     }
@@ -51,43 +52,43 @@ class TopView: UIView {
     }
     
     func setStatusText(text:String) {
-        self.titleText.pushTransition(duration: 0.4)
-        self.titleText.text = text
+        titleLabel.pushTransition(duration: 0.4)
+        titleLabel.text = text
     }
     
     func initScanView() {
-        self.scanButton.isHidden = false
-        self.setUIModeToScanning()
+        scanButton.isHidden = false
+        setUIModeToScanning()
     }
     
     func setUIModeToScanning() {
-        self.setStatusText(text: Constants.STATUS_TITLE_SCANNING)
-        self.scanButton.isEnabled = false
+        setStatusText(text: Constants.STATUS_TITLE_SCANNING)
+        scanButton.isEnabled = false
     }
     
     func setUIModeToFinished(hostCount:Int) {
-        self.setStatusText(text: "\(hostCount) \(Constants.STATUS_TITLE_HOSTS_FOUND)")
-        self.scanButton.isEnabled = true
+        setStatusText(text: "\(hostCount) \(Constants.STATUS_TITLE_HOSTS_FOUND)")
+        scanButton.isEnabled = true
     }
     
-    func scanButtonPressed(sender:AnyObject) {
-        self.delegate?.didPressScan()
+    @objc func scanButtonPressed(sender:AnyObject) {
+        delegate?.didPressScan()
     }
     
     func makeConstraints() {
-        self.searchButton.snp.makeConstraints { (make) in
+        searchButton.snp.makeConstraints { (make) in
             make.height.equalTo(self)
             make.width.equalTo(self.snp.height)
             make.left.top.equalTo(self)
         }
         
-        self.scanButton.snp.makeConstraints { (make) in
+        scanButton.snp.makeConstraints { (make) in
             make.height.equalTo(self)
             make.width.equalTo(self.snp.height)
             make.right.top.equalTo(self)
         }
         
-        self.titleText.snp.makeConstraints { (make) in
+        titleLabel.snp.makeConstraints { (make) in
             make.height.equalTo(self)
             make.top.equalTo(self)
             make.left.equalTo(self.searchButton.snp.right)

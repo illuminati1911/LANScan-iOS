@@ -14,50 +14,56 @@ protocol ScanViewDelegate: class {
     func didSelectTargetDevice(index:Int)
 }
 
-class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
+class ScanView: UIView  {
 
-    var scanButton:UIButton!
-    var scanningList:UITableView!
-    var spinner:RTSpinKitView!
+    private let scanButton = with(UIButton()) { button in
+        button.setTitle("Start Scan", for: UIControlState.normal)
+        button.titleLabel?.font = UIFont(name: "Press Start 2P", size: 12.0)
+        button.titleLabel?.textColor = UIColor.white
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.installShadow(height: 2)
+        button.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.backgroundColor = UIColor(red:0.00, green:0.56, blue:0.76, alpha:1.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+        button.layer.shadowRadius = 0
+        button.addTarget(self, action: #selector(scanButtonPressed), for: .touchUpInside)
+    }
+    
+    private let scanningList = with(UITableView()) { list in
+        list.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
+        list.separatorColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
+        list.separatorInset = .zero
+        list.layoutMargins = .zero
+        list.cellLayoutMarginsFollowReadableWidth = false
+        list.tableFooterView = UIView(frame: CGRect.zero)
+        list.alpha = 0
+        list.register(HostCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    private let spinner = with(RTSpinKitView(style: RTSpinKitViewStyle.stylePulse)) { tSpinner in
+        tSpinner?.spinnerSize = 100
+        tSpinner?.isHidden = true
+    }
+    
     weak var delegate:ScanViewDelegate?
-    var foundHosts:Array<Host> = []
+    
+    var foundHosts:Array<Host> = [] {
+        didSet {
+            scanningList.reloadData()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
+        backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
+        addSubview(scanButton)
+        addSubview(scanningList)
+        addSubview(spinner ?? RTSpinKitView(frame: .zero))
         
-        self.scanButton = UIButton()
-        self.scanButton.setTitle("Start Scan", for: UIControlState.normal)
-        self.scanButton.titleLabel?.font = UIFont(name: "Press Start 2P", size: 12.0)
-        self.scanButton.titleLabel?.textColor = UIColor.white
-        self.scanButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        self.scanButton.titleLabel?.installShadow(height: 2)
-        self.scanButton.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        self.scanButton.backgroundColor = UIColor(red:0.00, green:0.56, blue:0.76, alpha:1.0)
-        self.scanButton.layer.shadowOpacity = 1.0
-        self.scanButton.layer.shadowOffset = CGSize(width: 0, height: 3)
-        self.scanButton.layer.shadowRadius = 0
-        self.scanButton.addTarget(self, action: #selector(scanButtonPressed), for: .touchUpInside)
-        self.addSubview(self.scanButton)
-        
-        self.scanningList = UITableView()
-        self.scanningList.backgroundColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
-        self.scanningList.separatorColor = UIColor(red:0.17, green:0.24, blue:0.31, alpha:1.0)
-        self.scanningList.separatorInset = .zero
-        self.scanningList.layoutMargins = .zero
-        self.scanningList.cellLayoutMarginsFollowReadableWidth = false
-        self.scanningList.tableFooterView = UIView(frame: CGRect.zero)
-        self.scanningList.alpha = 0
-        self.scanningList.delegate = self
-        self.scanningList.dataSource = self
-        self.scanningList.register(HostCell.self, forCellReuseIdentifier: "cell")
-        self.addSubview(self.scanningList)
-        
-        self.spinner = RTSpinKitView(style: RTSpinKitViewStyle.stylePulse)
-        self.spinner.spinnerSize = 100
-        self.spinner.isHidden = true
-        self.addSubview(self.spinner)
+        scanningList.delegate = self
+        scanningList.dataSource = self
         
         makeConstraints()
     }
@@ -75,41 +81,40 @@ class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
+    func setUIModeToFinished() { showLoadingSpinner(show: false) }
+    
+    func showLoadingSpinner(show:Bool) { spinner?.isHidden = !show }
+    
     func setUIModeToScanning() {
-        self.foundHosts = []
-        self.scanningList.reloadData()
-        self.showLoadingSpinner(show: true)
+        foundHosts.removeAll()
+        scanningList.reloadData()
+        showLoadingSpinner(show: true)
     }
     
-    func setUIModeToFinished() {
-        self.showLoadingSpinner(show: false)
-    }
-    
-    func showLoadingSpinner(show:Bool) {
-        self.spinner.isHidden = !show
-    }
-    
-    func scanButtonPressed(sender:AnyObject) {
+    @objc func scanButtonPressed(sender:AnyObject) {
         self.delegate?.didPressInitialScan()
     }
     
     private func makeConstraints() {
-        self.scanButton.snp.makeConstraints { (make) in
+        scanButton.snp.makeConstraints { (make) in
             make.center.equalTo(self)
             make.width.equalTo(self).dividedBy(3)
             make.height.equalTo(self.scanButton.snp.width).dividedBy(2)
         }
         
-        self.scanningList.snp.makeConstraints { (make) in
+        scanningList.snp.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
         
-        self.spinner.snp.makeConstraints { (make) in
+        spinner?.snp.makeConstraints { (make) in
             make.center.equalTo(self)
         }
     }
+}
     
-    //-------------------- DELEGATES--------------------//
+//-------------------- DELEGATES--------------------//
+//
+extension ScanView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -124,18 +129,12 @@ class ScanView: UIView, UITableViewDelegate, UITableViewDataSource  {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:HostCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HostCell
-    
-        cell.hostnameLabel.text = foundHosts[indexPath.row].hostname
-        cell.ipLabel.text = foundHosts[indexPath.row].ipAddress
-        cell.macLabel.text = foundHosts[indexPath.row].macAddress
-        cell.vendorLabel.text = foundHosts[indexPath.row].manufacturer
-        cell.setVendorImage(vendor: foundHosts[indexPath.row].manufacturer!)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HostCell
+        cell.setHostDetails(host: foundHosts[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.didSelectTargetDevice(index: indexPath.row)
+        delegate?.didSelectTargetDevice(index: indexPath.row)
     }
 }

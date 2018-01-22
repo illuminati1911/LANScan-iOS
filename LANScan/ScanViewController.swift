@@ -10,106 +10,105 @@ import UIKit
 import SnapKit
 import ReactiveCocoa
 
-class ScanViewController: UIViewController, ScanViewDelegate, TopViewDelegate {
-
-    var topView:TopView!
-    var scanView:ScanView!
+class ScanViewController: UIViewController {
+    
+    let topView = TopView()
+    let scanView = ScanView()
     var pingers:Array<PingWrapper>?
     var hosts:Array<Host> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red:0.09, green:0.20, blue:0.27, alpha:1.0)
+        view.backgroundColor = UIColor(red:0.09, green:0.20, blue:0.27, alpha:1.0)
         
-        self.topView = TopView(frame: CGRect.zero)
-        self.topView.delegate = self
-        self.view.addSubview(self.topView)
- 
-        self.scanView = ScanView(frame: CGRect.zero)
-        self.scanView.delegate = self
-        self.view.addSubview(self.scanView)
+        topView.delegate = self
+        scanView.delegate = self
         
-        self.makeConstraints()
+        view.addSubview(self.topView)
+        view.addSubview(self.scanView)
+        makeConstraints()
     }
     
     override func viewDidLayoutSubviews() {
         self.topView.installBottomBorder()
     }
     
-    //-------------------- NETWORK --------------------//
-    
-    func isOnWiFi() -> Bool {
-        let isOnWiFi = WiFiCheck().isOnWiFi()
-        if (!isOnWiFi) {
-            self.presentNoWiFiWarning()
-        }
-        return isOnWiFi;
-    }
-    
+//-------------------- NETWORK --------------------//
+//
     func startScanning() {
-        LANScanner.scanNetworkForHosts().subscribeNext { [unowned self] (hosts:Any?) in
-            let finalHosts = ((hosts as! RACTuple).allObjects() as! Array<Host>)
-            self.setUIToFinished(hostCount: finalHosts.count)
-            self.hosts = finalHosts
-            self.scanView.foundHosts = finalHosts
-            self.scanView.scanningList.reloadData()
+        LANScanner
+            .scanNetworkForHosts()
+            .subscribeNext { [weak self] (hosts:Any?) in
+                let finalHosts = ((hosts as? RACTuple)?.allObjects() as? Array<Host>)
+                if let fHosts = finalHosts {
+                    self?.setUIToFinished(hostCount: fHosts.count)
+                    self?.hosts = fHosts
+                    self?.scanView.foundHosts = fHosts
+                }
         }
     }
     
-    //-------------------- DELEGATES--------------------//
-    
-    func didPressInitialScan() {
-        if(self.isOnWiFi()){
-            self.scanView.initScanView()
-            self.topView.initScanView()
-            self.startScanning()
-        }
-    }
-    
-    func didPressScan() {
-        if(self.isOnWiFi()){
-            self.setUIToScanning()
-            self.startScanning()
-        }
-    }
-    
-    func didSelectTargetDevice(index: Int) {
-        let deviceVC:DeviceViewController = DeviceViewController(host: hosts[index])
-        deviceVC.modalTransitionStyle = .flipHorizontal
-        self.present(deviceVC, animated: true, completion: nil)
-    }
-    
-    //-------------------- UI ACTIONS/ANIMATIONS --------------------//
-    
+//-------------------- UI ACTIONS/ANIMATIONS/CONSTRAINTS --------------------//
+//
     func setUIToScanning() {
-        self.topView.setUIModeToScanning()
-        self.scanView.setUIModeToScanning()
+        topView.setUIModeToScanning()
+        scanView.setUIModeToScanning()
     }
     
     func setUIToFinished(hostCount:Int) {
-        self.topView.setUIModeToFinished(hostCount: hostCount)
-        self.scanView.setUIModeToFinished()
+        topView.setUIModeToFinished(hostCount: hostCount)
+        scanView.setUIModeToFinished()
     }
     
     func presentNoWiFiWarning() {
-        let alert = UIAlertController(title: Constants.NOTIFICATION_NO_WIFI_TITLE, message: Constants.NOTIFICATION_NO_WIFI_BODY, preferredStyle: .alert)
+        let alert = UIAlertController(title: Constants.NOTIFICATION_NO_WIFI_TITLE,
+                                      message: Constants.NOTIFICATION_NO_WIFI_BODY,
+                                      preferredStyle: .alert)
         let defaultButton = UIAlertAction(title: Constants.OK_BUTTON_LABEL, style: .default)
         alert.addAction(defaultButton)
         present(alert, animated: true)
     }
-    
-    //-------------------- CONSTRAINTS --------------------//
-    
+
     func makeConstraints() {
-        self.topView.snp.makeConstraints { (make) in
+        topView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.view)
             make.top.equalTo(self.topLayoutGuide.snp.bottom)
             make.height.equalTo(60)
         }
         
-        self.scanView.snp.makeConstraints { (make) in
+        scanView.snp.makeConstraints { (make) in
             make.top.equalTo(self.topView.snp.bottom)
             make.left.right.bottom.equalTo(self.view)
         }
+    }
+}
+
+//-------------------- DELEGATES--------------------//
+//
+extension ScanViewController: ScanViewDelegate, TopViewDelegate {
+    
+    func didPressInitialScan() {
+        if WiFiCheck().isOnWiFi() {
+            scanView.initScanView()
+            topView.initScanView()
+            startScanning()
+        } else {
+            presentNoWiFiWarning()
+        }
+    }
+    
+    func didPressScan() {
+        if WiFiCheck().isOnWiFi() {
+            setUIToScanning()
+            startScanning()
+        } else {
+            presentNoWiFiWarning()
+        }
+    }
+    
+    func didSelectTargetDevice(index: Int) {
+        let deviceVC = DeviceViewController(host: hosts[index])
+        deviceVC.modalTransitionStyle = .flipHorizontal
+        present(deviceVC, animated: true, completion: nil)
     }
 }

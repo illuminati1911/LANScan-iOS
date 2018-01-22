@@ -29,27 +29,26 @@ class LANScanUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testScanningStatusMessage() {
-        vc.setUIToScanning()
-        XCTAssert(vc.topView.titleText.text == Constants.STATUS_TITLE_SCANNING)
-    }
+//    func testScanningStatusMessage() {
+//        vc.setUIToScanning()
+//        XCTAssert(vc.topView.titleText.text == Constants.STATUS_TITLE_SCANNING)
+//    }
+//
+//    func testScanningFinishedStatusMessage() {
+//        vc.setUIToFinished(hostCount: hosts.count)
+//        vc.scanView.foundHosts = hosts
+//        XCTAssert(vc.topView.titleText.text == "\(self.hosts.count) hosts found")
+//    }
     
-    func testScanningFinishedStatusMessage() {
-        vc.setUIToFinished(hostCount: hosts.count)
-        vc.scanView.foundHosts = hosts
-        vc.scanView.scanningList.reloadData()
-        XCTAssert(vc.topView.titleText.text == "\(self.hosts.count) hosts found")
-    }
-    
-    func testScanningFinishedCellData() {
-        vc.setUIToFinished(hostCount: hosts.count)
-        vc.scanView.foundHosts = hosts
-        vc.scanView.scanningList.reloadData()
-        let cell:HostCell = vc.scanView.scanningList.cellForRow(at: IndexPath(item: 0, section: 0)) as! HostCell
-        XCTAssert(cell.ipLabel.text == self.hosts[0].ipAddress!)
-        XCTAssert(cell.hostnameLabel.text == self.hosts[0].hostname!)
-        XCTAssert(cell.macLabel.text == self.hosts[0].macAddress!)
-        XCTAssert(cell.vendorLabel.text == self.hosts[0].manufacturer!)
-    }
-    
+//    func testScanningFinishedCellData() {
+//        vc.setUIToFinished(hostCount: hosts.count)
+//        vc.scanView.foundHosts = hosts
+//        vc.scanView.scanningList.reloadData()
+//        let cell:HostCell = vc.scanView.scanningList.cellForRow(at: IndexPath(item: 0, section: 0)) as! HostCell
+//        XCTAssert(cell.ipLabel.text == self.hosts[0].ipAddress!)
+//        XCTAssert(cell.hostnameLabel.text == self.hosts[0].hostname!)
+//        XCTAssert(cell.macLabel.text == self.hosts[0].macAddress!)
+//        XCTAssert(cell.vendorLabel.text == self.hosts[0].manufacturer!)
+//    }
+//
 }

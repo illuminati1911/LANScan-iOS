@@ -14,10 +14,14 @@ precedencegroup pipe {
     associativity: left
     higherThan: LogicalConjunctionPrecedence
 }
-//{ associativity left precedence 80 }
 
 func |> <T, U>(value: T, function: ((T) -> U)) -> U {
     return function(value)
+}
+
+func with<T>(_ value: T, function: (T) -> Void) -> T {
+    function(value)
+    return value
 }
 
 class Utils {

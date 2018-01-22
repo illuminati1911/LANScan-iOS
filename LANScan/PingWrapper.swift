@@ -7,86 +7,72 @@
 //
 
 
-class PingWrapper: NSObject, SimplePingDelegate {
+class PingWrapper: NSObject {
 
     public typealias PingCompletion = (_ hostname:String, _ found:Bool) -> ()
     
-    var ping:SimplePing!
+    var ping:SimplePing?
     var timeoutTimer:Timer?
-    var hostName:String?
+    var hostName: String
     var completion:PingCompletion?
     
     init(hostName:String) {
-        super.init()
-        self.ping = SimplePing(hostName: hostName)
         self.hostName = hostName
-        self.ping.addressStyle = .icmPv4
-        self.ping.delegate = self
+        super.init()
+        ping = SimplePing(hostName: hostName)
+        ping?.addressStyle = .icmPv4
+        ping?.delegate = self
     }
     
-    func startPing(completion: @escaping PingCompletion) {
-        self.completion = completion
-        self.ping.start()
+    func startPing(callback: @escaping PingCompletion) {
+        completion = callback
+        ping?.start()
     }
     
     func stopPing() {
-        if let simpleping = self.ping {
-            simpleping.stop()
-        }
+        guard let simplePing = ping else { return }
+        simplePing.stop()
         
-        if self.timeoutTimer != nil && self.timeoutTimer!.isValid {
-            self.timeoutTimer!.invalidate()
-            self.timeoutTimer = nil
-        }
+        guard let timer = timeoutTimer, timer.isValid else { return }
+        timer.invalidate()
+        timeoutTimer = nil
     }
     
-    func timeout() {
-        self.host(found: false)
+    @objc func timeout() {
+        hostFound(false)
     }
     
-    func host(found:Bool) {
-        self.stopPing()
-        if self.hostName != nil {
-            self.completion?(hostName!, found)
-        }else{
-            self.completion?("No hostname", found)
-        }
-        
-    }
-    
-    
-    
-    //-------------------- SIMPLE PING DELEGATE --------------------//
-
-    
-    func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
-        self.timeoutTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
-        self.ping.send(with: nil)
-    }
-    
-    func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
-        self.host(found: false)
-        //print("ERROR DID FAIL WITH ERROR \(self.hostName)");
-    }
-    
-    func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
-        self.host(found: true)
-    }
-    
-    func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) {
-        //self.host(found: false)
-        //print("ERROR UNEXPECTED \(self.hostName)");
-        //print(packet.description)
-    }
-    
-    func simplePing(_ pinger: SimplePing, didSendPacket packet: Data, sequenceNumber: UInt16) {
-        
-    }
-    
-    func simplePing(_ pinger: SimplePing, didFailToSendPacket packet: Data, sequenceNumber: UInt16, error: Error) {
-        //print("ERROR FAIL TO SEND \(self.hostName)");
-        //print(error.localizedDescription)
-        self.host(found: false)
+    func hostFound(_ found:Bool) {
+        stopPing()
+        completion?(hostName, found)
     }
 }
 
+//-------------------- SIMPLE PING DELEGATE --------------------//
+//
+extension PingWrapper: SimplePingDelegate {
+    
+    func simplePing(_ pinger: SimplePing, didStartWithAddress address: Data) {
+        timeoutTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(timeout), userInfo: nil, repeats: false)
+        ping?.send(with: nil)
+    }
+    
+    func simplePing(_ pinger: SimplePing, didFailWithError error: Error) {
+        hostFound(false)
+    }
+    
+    func simplePing(_ pinger: SimplePing, didReceivePingResponsePacket packet: Data, sequenceNumber: UInt16) {
+        hostFound(true)
+    }
+    
+    func simplePing(_ pinger: SimplePing, didReceiveUnexpectedPacket packet: Data) { }
+    
+    func simplePing(_ pinger: SimplePing, didSendPacket packet: Data, sequenceNumber: UInt16) { }
+    
+    func simplePing(_ pinger: SimplePing, didFailToSendPacket packet: Data, sequenceNumber: UInt16, error: Error) {
+        print("ERROR FAIL TO SEND \(self.hostName)");
+        print(error.localizedDescription)
+        hostFound(false)
+    }
+
+}

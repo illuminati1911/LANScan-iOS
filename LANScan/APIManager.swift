@@ -24,13 +24,13 @@ class APIManager {
             let datarequest = Alamofire.request("\(macAPIAddress)\(host.macAddress!)")
             DispatchQueue.global().async {
                 datarequest.responseString { response in
-                    if(response.result.isSuccess){
-                        subscriber?.sendNext(Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: host.macAddress, manufacturer: response.result.value))
-                        subscriber?.sendCompleted()
-                    } else {
-                        subscriber?.sendNext(Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: host.macAddress, manufacturer: Constants.MANUFACTURER_NOT_FOUND))
-                        subscriber?.sendCompleted()
-                    }
+                    subscriber?.sendNext(
+                        Host(ipAddress: host.ipAddress,
+                             hostname: host.hostname,
+                             macAddress: host.macAddress,
+                             manufacturer: response.result.isSuccess
+                                ? response.result.value
+                                : Constants.MANUFACTURER_NOT_FOUND))
                 }
             }
             
@@ -40,4 +40,3 @@ class APIManager {
         }).subscribe(on: RACScheduler(priority: RACSchedulerPriorityBackground))
     }
 }
-

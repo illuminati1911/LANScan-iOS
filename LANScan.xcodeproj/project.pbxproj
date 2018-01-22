@@ -16,7 +16,6 @@
 		32350FC91E36936200AEB1C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32350FC81E36936200AEB1C1 /* Assets.xcassets */; };
 		32350FCC1E36936200AEB1C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32350FCA1E36936200AEB1C1 /* LaunchScreen.storyboard */; };
 		32350FD71E36936200AEB1C1 /* LANScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FD61E36936200AEB1C1 /* LANScanTests.swift */; };
-		32350FE31E3694A200AEB1C1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE11E3694A200AEB1C1 /* MainViewController.swift */; };
 		32350FE41E3694A200AEB1C1 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE21E3694A200AEB1C1 /* ScanViewController.swift */; };
 		32350FE81E3694DD00AEB1C1 /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE51E3694DD00AEB1C1 /* ScanView.swift */; };
 		32350FE91E3694DD00AEB1C1 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32350FE61E3694DD00AEB1C1 /* TopView.swift */; };
@@ -65,7 +64,6 @@
 		32350FD21E36936200AEB1C1 /* LANScanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LANScanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32350FD61E36936200AEB1C1 /* LANScanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LANScanTests.swift; sourceTree = "<group>"; };
 		32350FD81E36936200AEB1C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32350FE11E3694A200AEB1C1 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		32350FE21E3694A200AEB1C1 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		32350FE51E3694DD00AEB1C1 /* ScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		32350FE61E3694DD00AEB1C1 /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 		32350FEB1E3694EE00AEB1C1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				32350FE11E3694A200AEB1C1 /* MainViewController.swift */,
 				32350FE21E3694A200AEB1C1 /* ScanViewController.swift */,
 				32F1CA461E5846B1005838CF /* DeviceViewController.swift */,
 			);
@@ -533,7 +530,6 @@
 				324F2BCA1E3698B000CAC273 /* Reachability.m in Sources */,
 				32056FFE1E6ADA730046ADDD /* PortScanner.swift in Sources */,
 				324F2BDD1E36993400CAC273 /* APIManager.swift in Sources */,
-				32350FE31E3694A200AEB1C1 /* MainViewController.swift in Sources */,
 				324F2BDC1E36993400CAC273 /* LANScanner.swift in Sources */,
 				324F2BBC1E36983800CAC273 /* Extensions.swift in Sources */,
 				32350FE91E3694DD00AEB1C1 /* TopView.swift in Sources */,

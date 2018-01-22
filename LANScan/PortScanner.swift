@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 class PortScanner {
     
-    static func scanPortsOn(host:Host) -> RACSignal {
+    static func scanPortsOn(_ host: Host) -> RACSignal {
         guard let ip = host.ipAddress else { return RACSignal() }
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
             DispatchQueue.global(qos: .background).async {
@@ -27,23 +27,25 @@ class PortScanner {
                     subscriber?.sendCompleted()
                 })
             }
+            
             return RACDisposable(block: {
             })
         })
     }
     
-    private static func signalForPort(port:Int32, ipAddress:String) -> RACSignal {
+    private static func signalForPort(port: Int32, ipAddress:String) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
-                let client = TCPClient(address: ipAddress, port: port)
-                switch client.connect(timeout: 1) {
-                case .success:
-                    subscriber?.sendNext(String(port))
-                    subscriber?.sendCompleted()
-                case .failure:
-                    subscriber?.sendNext(Constants.NO_SERVICE)
-                    subscriber?.sendCompleted()
-                }
+            let client = TCPClient(address: ipAddress, port: port)
+            switch client.connect(timeout: 1) {
+            case .success:
+                subscriber?.sendNext(String(port))
+            case .failure:
+                subscriber?.sendNext(Constants.NO_SERVICE)
+            }
+            subscriber?.sendCompleted()
+            
             return RACDisposable(block: {
+                client.close()
             })
         })
     }
