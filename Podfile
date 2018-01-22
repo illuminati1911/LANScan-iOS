@@ -5,7 +5,7 @@ target 'LANScan' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'ReactiveCocoa', '2.5'
-  pod 'Alamofire', '4.3.0'
+  pod 'Alamofire', '4.6.0'
   pod 'SnapKit', '4.0.0'
   pod 'SpinKit', '~> 1.2'
   pod 'SwiftSocket', '2.0.1'

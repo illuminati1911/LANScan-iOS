@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.3.0)
+  - Alamofire (4.6.0)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -12,19 +12,19 @@ PODS:
   - SwiftSocket (2.0.1)
 
 DEPENDENCIES:
-  - Alamofire (= 4.3.0)
+  - Alamofire (= 4.6.0)
   - ReactiveCocoa (= 2.5)
   - SnapKit (= 4.0.0)
   - SpinKit (~> 1.2)
   - SwiftSocket (= 2.0.1)
 
 SPEC CHECKSUMS:
-  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SpinKit: 65906a8b534a4e14cbfd3f8b0b6c329131faef4a
   SwiftSocket: 2d814afdc97c89217982f86fd036c1874134a63f
 
-PODFILE CHECKSUM: b359f986ba3d690d32ae174394dd387842e2955a
+PODFILE CHECKSUM: 5bbb32d303b6935819123229c321f142234ae501
 
 COCOAPODS: 1.4.0
