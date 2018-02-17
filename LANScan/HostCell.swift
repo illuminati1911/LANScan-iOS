@@ -33,7 +33,7 @@ class HostCell: UITableViewCell {
         label.textAlignment = NSTextAlignment.right
     }
     
-    static func initLabel(_ label:UILabel) {
+    static func initLabel(_ label: UILabel) {
         label.font = UIFont(name: "Press Start 2P", size: 8.0)
         label.textColor = UIColor.white
         label.adjustsFontSizeToFitWidth = true
@@ -70,7 +70,7 @@ class HostCell: UITableViewCell {
         )
     }
     
-    func setCellImageNamed(name:String) {
+    private func setCellImageNamed(name: String) {
         icon.image = Utils.imageWithImage(image: UIImage(named: name)!, scaledToSize: CGSize(width: 65, height: 65))
     }
     

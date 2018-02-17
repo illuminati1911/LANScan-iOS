@@ -6,14 +6,11 @@
 //  Copyright © 2017 Ville Välimaa. All rights reserved.
 //
 
-class WiFiCheck: NSObject {
+class WiFiCheck {
     
-    var hostReachability:Reachability?
-    
-    
-    func isOnWiFi() -> Bool {
+    static func isOnWiFi() -> Bool {
         let host = "http://www.google.com"
-        hostReachability = Reachability(hostName: host)
+        let hostReachability = Reachability(hostName: host)
         if hostReachability?.currentReachabilityStatus() == ReachableViaWiFi {
             return true
         }

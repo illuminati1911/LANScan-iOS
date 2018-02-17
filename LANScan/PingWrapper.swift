@@ -29,7 +29,7 @@ class PingWrapper: NSObject {
         ping?.start()
     }
     
-    func stopPing() {
+    private func stopPing() {
         guard let simplePing = ping else { return }
         simplePing.stop()
         
@@ -42,7 +42,7 @@ class PingWrapper: NSObject {
         hostFound(false)
     }
     
-    func hostFound(_ found:Bool) {
+    private func hostFound(_ found:Bool) {
         stopPing()
         completion?(hostName, found)
     }

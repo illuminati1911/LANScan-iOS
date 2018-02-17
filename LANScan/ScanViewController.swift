@@ -12,10 +12,10 @@ import ReactiveCocoa
 
 class ScanViewController: UIViewController {
     
-    let topView = TopView()
-    let scanView = ScanView()
-    var pingers:Array<PingWrapper>?
-    var hosts:Array<Host> = []
+    private let topView = TopView()
+    private let scanView = ScanView()
+    private var pingers: Array<PingWrapper> = []
+    private var hosts: Array<Host> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class ScanViewController: UIViewController {
     
 //-------------------- NETWORK --------------------//
 //
-    func startScanning() {
+    private func startScanning() {
         LANScanner
             .scanNetworkForHosts()
             .subscribeNext { [weak self] (hosts:Any?) in
@@ -50,17 +50,17 @@ class ScanViewController: UIViewController {
     
 //-------------------- UI ACTIONS/ANIMATIONS/CONSTRAINTS --------------------//
 //
-    func setUIToScanning() {
+    private func setUIToScanning() {
         topView.setUIModeToScanning()
         scanView.setUIModeToScanning()
     }
     
-    func setUIToFinished(hostCount:Int) {
+    private func setUIToFinished(hostCount:Int) {
         topView.setUIModeToFinished(hostCount: hostCount)
         scanView.setUIModeToFinished()
     }
     
-    func presentNoWiFiWarning() {
+    private func presentNoWiFiWarning() {
         let alert = UIAlertController(title: Constants.NOTIFICATION_NO_WIFI_TITLE,
                                       message: Constants.NOTIFICATION_NO_WIFI_BODY,
                                       preferredStyle: .alert)
@@ -69,7 +69,7 @@ class ScanViewController: UIViewController {
         present(alert, animated: true)
     }
 
-    func makeConstraints() {
+    private func makeConstraints() {
         topView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.view)
             make.top.equalTo(self.topLayoutGuide.snp.bottom)
@@ -88,7 +88,7 @@ class ScanViewController: UIViewController {
 extension ScanViewController: ScanViewDelegate, TopViewDelegate {
     
     func didPressInitialScan() {
-        if WiFiCheck().isOnWiFi() {
+        if WiFiCheck.isOnWiFi() {
             scanView.initScanView()
             topView.initScanView()
             startScanning()
@@ -98,7 +98,7 @@ extension ScanViewController: ScanViewDelegate, TopViewDelegate {
     }
     
     func didPressScan() {
-        if WiFiCheck().isOnWiFi() {
+        if WiFiCheck.isOnWiFi() {
             setUIToScanning()
             startScanning()
         } else {

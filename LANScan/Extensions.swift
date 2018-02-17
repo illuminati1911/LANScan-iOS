@@ -10,6 +10,7 @@ import UIKit
 import ReactiveCocoa
 
 // http://stackoverflow.com/questions/33632266/animate-text-change-of-uilabel
+//
 extension UIView {
     func pushTransition(duration:CFTimeInterval) {
         let animation:CATransition = CATransition()
@@ -23,7 +24,7 @@ extension UIView {
 }
 
 extension HostnameResolver {
-    static func getHost(ip:String) -> RACSignal {
+    static func getHost(ip: String) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
             DispatchQueue.global().async {
                 var hostname = HostnameResolver.getHostFromIPAddress((ip as NSString).cString(using: String.Encoding.ascii.rawValue))
@@ -39,7 +40,7 @@ extension HostnameResolver {
 }
 
 extension MacFinder {
-    static func addMacToHost(host:Host) -> Host {
+    static func addMacToHost(host: Host) -> Host {
         var mac = MacFinder.ip(toMac:(host.ipAddress! as NSString).cString(using: String.Encoding.ascii.rawValue))
         if (mac == nil) { mac = Constants.EMPTY }
         return Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: mac, manufacturer: nil)

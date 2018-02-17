@@ -83,15 +83,15 @@ class ScanView: UIView  {
     
     func setUIModeToFinished() { showLoadingSpinner(show: false) }
     
-    func showLoadingSpinner(show:Bool) { spinner?.isHidden = !show }
-    
     func setUIModeToScanning() {
         foundHosts.removeAll()
         scanningList.reloadData()
         showLoadingSpinner(show: true)
     }
     
-    @objc func scanButtonPressed(sender:AnyObject) {
+    private func showLoadingSpinner(show:Bool) { spinner?.isHidden = !show }
+    
+    @objc private func scanButtonPressed(sender:AnyObject) {
         self.delegate?.didPressInitialScan()
     }
     

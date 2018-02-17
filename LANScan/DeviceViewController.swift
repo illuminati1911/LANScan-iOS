@@ -10,8 +10,8 @@ import UIKit
 
 class DeviceViewController: UIViewController {
 
-    let host: Host
-    let portScanTerminal = HackerTerminal(typingDelay: 0.0015)
+    private let host: Host
+    private let portScanTerminal = HackerTerminal(typingDelay: 0.0015)
     
     init(host: Host) {
         self.host = host
@@ -45,7 +45,7 @@ class DeviceViewController: UIViewController {
         }
     }
     
-    func makeConstraints() {
+    private func makeConstraints() {
         portScanTerminal.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }

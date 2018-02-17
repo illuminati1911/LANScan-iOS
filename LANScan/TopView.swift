@@ -51,7 +51,7 @@ class TopView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setStatusText(text:String) {
+    private func setStatusText(text:String) {
         titleLabel.pushTransition(duration: 0.4)
         titleLabel.text = text
     }
@@ -71,11 +71,11 @@ class TopView: UIView {
         scanButton.isEnabled = true
     }
     
-    @objc func scanButtonPressed(sender:AnyObject) {
+    @objc private func scanButtonPressed(sender:AnyObject) {
         delegate?.didPressScan()
     }
     
-    func makeConstraints() {
+    private func makeConstraints() {
         searchButton.snp.makeConstraints { (make) in
             make.height.equalTo(self)
             make.width.equalTo(self.snp.height)

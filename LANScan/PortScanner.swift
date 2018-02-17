@@ -33,7 +33,7 @@ class PortScanner {
         })
     }
     
-    private static func signalForPort(port: Int32, ipAddress:String) -> RACSignal {
+    private static func signalForPort(port: Int32, ipAddress: String) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
             let client = TCPClient(address: ipAddress, port: port)
             switch client.connect(timeout: 1) {

@@ -19,7 +19,7 @@ class APIManager {
         return RACSignal.combineLatest(signals as NSArray)
     }
 
-    static func signalForManufacturer(host:Host) -> RACSignal {
+    private static func signalForManufacturer(host: Host) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
             let datarequest = Alamofire.request("\(macAPIAddress)\(host.macAddress!)")
             DispatchQueue.global().async {

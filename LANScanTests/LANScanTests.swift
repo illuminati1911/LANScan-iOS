@@ -12,7 +12,7 @@ import ReactiveCocoa
 
 class LANScanTests: XCTestCase {
     
-    var hosts:Array<Host>!
+    var hosts: Array<Host> = []
     
     override func setUp() {
         super.setUp()
