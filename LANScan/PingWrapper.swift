@@ -11,10 +11,10 @@ class PingWrapper: NSObject {
 
     public typealias PingCompletion = (_ hostname:String, _ found:Bool) -> ()
     
-    var ping:SimplePing?
-    var timeoutTimer:Timer?
-    var hostName: String
-    var completion:PingCompletion?
+    private var ping:SimplePing?
+    private var timeoutTimer:Timer?
+    private var hostName: String
+    private var completion:PingCompletion?
     
     init(hostName:String) {
         self.hostName = hostName
