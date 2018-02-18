@@ -6,7 +6,6 @@
 //  Copyright © 2017 Ville Välimaa. All rights reserved.
 //
 
-
 struct Host {
     let ipAddress:String?
     let hostname:String?

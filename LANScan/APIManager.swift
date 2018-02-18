@@ -13,10 +13,9 @@ let macAPIAddress = "https://api.macvendors.com/"
 
 class APIManager {
     
-    static func signalForManufacturers(hosts:Any?) -> RACSignal {
-        let hosts = hosts as! Array<Host>
-        let signals = hosts.map { signalForManufacturer(host: $0) }
-        return RACSignal.combineLatest(signals as NSArray)
+    static func signalForManufacturers(hosts: Any?) -> RACSignal {
+        return RACSignal.combineLatest((hosts as? Array<Host> ?? [])
+            .map { signalForManufacturer(host: $0) } as NSArray)
     }
 
     private static func signalForManufacturer(host: Host) -> RACSignal {

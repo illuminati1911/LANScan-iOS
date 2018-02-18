@@ -13,9 +13,9 @@ class LANScanner {
     static func scanNetworkForHosts() -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
             LANScanner.scan()
-                .flattenMap({ (hosts: Any?) -> RACSignal! in
+                .flattenMap({ (hosts: Any?) -> RACSignal? in
                     return hosts |> signalForHostnamesAndMAC
-                }).flattenMap({ (hosts: Any?) -> RACStream? in
+                }).flattenMap({ (hosts: Any?) -> RACSignal? in
                     return hosts |> APIManager.signalForManufacturers
                 })
                 .deliverOnMainThread()
