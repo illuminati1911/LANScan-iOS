@@ -27,8 +27,12 @@ extension HostnameResolver {
     static func getHost(ip: String) -> RACSignal {
         return RACSignal.createSignal({ (subscriber: RACSubscriber?) -> RACDisposable? in
             DispatchQueue.global().async {
-                var hostname = HostnameResolver.getHostFromIPAddress((ip as NSString).cString(using: String.Encoding.ascii.rawValue))
-                if (hostname == ip) { hostname = "Generic device"}
+                var hostname: String? {
+                    let hostname = HostnameResolver.getHostFromIPAddress((ip as NSString).cString(using: String.Encoding.ascii.rawValue))
+                    return hostname == ip
+                        ? "Generic device"
+                        : hostname
+                }
                 subscriber?.sendNext(Host(ipAddress: ip, hostname: hostname, macAddress: nil, manufacturer: nil))
                 subscriber?.sendCompleted()
             }
@@ -41,9 +45,13 @@ extension HostnameResolver {
 
 extension MacFinder {
     static func addMacToHost(host: Host) -> Host {
-        var mac = MacFinder.ip(toMac:(host.ipAddress! as NSString).cString(using: String.Encoding.ascii.rawValue))
-        if (mac == nil) { mac = Constants.EMPTY }
-        return Host(ipAddress: host.ipAddress, hostname: host.hostname, macAddress: mac, manufacturer: nil)
+        return Host(
+            ipAddress: host.ipAddress,
+            hostname: host.hostname,
+            macAddress: MacFinder
+                .ip(toMac:(host.ipAddress! as NSString)
+                .cString(using: String.Encoding.ascii.rawValue)),
+            manufacturer: host.manufacturer)
     }
 }
 
